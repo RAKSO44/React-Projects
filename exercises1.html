@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+
+    <!-- Creating the Container -->
+    <div class="js-container"> 
+    
+    <!-- Importing the React Library -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <!-- Importing Babel to translate JSX into normal JS in the Website -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    
+    <!-- React Code -->
+    <script type="text/babel">
+
+      const currentDate = dayjs().format('MMMM D');
+      const currentTime = dayjs().format('HH:mm:ss');
+
+      const socks = 10;
+      const tshirts = 8;   
+      const shippingCost = 5;
+      
+      const productCost = socks + 2*tshirts;
+      const totalCost = productCost + shippingCost;
+
+      // Console logs
+
+      console.log(totalCost);
+      console.log(currentDate);
+
+      const button = <button>Good job!</button>
+      const paragraph = <p>My name is Oscar</p>
+      
+      const displayCost = (
+        <p>
+            Product Cost: ${productCost}   <br />
+            Shipping Cost: ${shippingCost} <br />
+            Total Cost: ${totalCost}       <br />
+            <button>Place your order</button>
+        </p>
+        )
+
+      const displayAddToCart = (
+        <div>
+            <p>Cotton socks</p> <br />
+            <p>Price: ${10}</p> <br />
+          <button>
+            Add to Cart
+          </button>
+        </div>
+      )
+    
+      const displayCurrentDate = <p> Today is {currentDate} </p>
+      const displayCurrentTime = <p> Current time: {currentTime} </p>
+
+      const container = document.querySelector('.js-container');
+      const root = (ReactDOM.createRoot);
+
+      root(container).render(displayAddToCart);
+
+
+    </script>
+  </body>
+</html>
