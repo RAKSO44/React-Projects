@@ -30,7 +30,7 @@
         </>
       );  
     }
-
+    
     function ChatMessage({ message, sender }){ //destructuring
 
       // const message = props.message;
@@ -61,26 +61,46 @@
       );
     }
     
+    function ChatMessages(){
+        const chatMessages = [{
+          message: 'hello Chatbot',
+          sender: 'user',
+          id: 'id1'
+        },{
+          message: 'Hello! How can I help you?',
+          sender: 'robot',
+          id: 'id2'
+        },{
+          message: 'Can you give me the date?',
+          sender: 'user',
+          id: 'id3'
+        },{
+          message: 'It is September 26th',
+          sender: 'robot',
+          id: 'id4'
+        }]
+
+        return(
+          <>
+          
+            {chatMessages.map((chatMessage) => {
+              return (
+                <ChatMessage
+                  message={chatMessage.message}
+                  sender={chatMessage.sender}
+                  key={chatMessage.id}
+                />
+              ); 
+            })}
+          </>
+        );       
+    }
+    
     function App(){
       return(
         <>
           <ChatInput />
-          <ChatMessage 
-            message="hello Chatbot" 
-            sender="user"
-          />
-          <ChatMessage 
-            message="Hello! How can I help you?" 
-            sender="robot"  
-          />
-          <ChatMessage 
-            message="Can you give me the date?" 
-            sender="user" 
-          />
-          <ChatMessage 
-            message="It's September 26th" 
-            sender="robot" 
-          />
+          <ChatMessages />
         </>       
       );
     }
