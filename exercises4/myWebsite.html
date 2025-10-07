@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+    <style>
+
+      .app-container{
+        display: flex;
+        flex-direction: column;
+      }
+      .button-container {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+      .title{
+        font-family: Arial;
+        font-size: larger;
+        margin-top: 15px; 
+        margin-bottom: 15px;
+      }
+      .js-input{
+        padding: 8px 20px;
+        margin: 3px 5px;
+        border-width: 1.5px;
+        border-radius: 5px;
+      }
+
+      .js-button {
+        padding: 8px 15px;
+        margin: 10px 2px;
+        background-color: rgb(0, 123, 255);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        align-self: flex-start;
+        flex-direction: row;
+}
+
+    </style>
+  </head>
+  <body>
+
+    <div class="js-container"> 
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    
+
+    <!-- React Code -->
+    <script type="text/babel">
+
+      function Email(){
+        return(
+          <div>
+            <input 
+              className="js-input"
+              placeholder="Email"
+            />
+          </div>
+          
+        )
+      }
+
+      function Password(){
+
+        const [passwordVisible, setPasswordVisible] = React.useState(false);
+
+        function showPassword(){
+          setPasswordVisible(!passwordVisible)
+        }
+
+        return(
+          <div>
+            <input 
+              className="js-input"
+              placeholder="Password"
+              type={passwordVisible === true 
+                ? 'text' 
+                : 'password'}
+            />
+            <button
+              onClick={showPassword}
+            >{!passwordVisible 
+                ? "Show" 
+                : "Hide"}
+            </button>
+          </div>
+          
+        )
+      }
+
+      function Login(){
+
+        return(
+            <button 
+              className="js-button"
+            >Login</button>
+        )
+      }
+
+      function SignUp(){
+
+        return(
+          <button
+            className="js-button"
+          >Sign Up</button>
+        )
+      }
+
+    
+      function App(){
+
+        return(
+        <div className="app-container">
+          <p className="title">Hello, welcome to my website</p>
+          <Email/>
+          <Password />
+          <div className="button-container">
+            <Login />
+            <SignUp />
+          </div>   
+        </div>       
+        );
+      }
+
+
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
