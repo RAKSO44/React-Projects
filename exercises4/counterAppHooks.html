@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+    <style>
+
+      body {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+      .buttonCounter-container{
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        align-items: center;
+        flex-direction: row;
+      }
+
+      .buttonCounter{
+        background-color: rgb(25, 135, 84);
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="js-container"> 
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    
+
+    <!-- React Code -->
+    <script type="text/babel">
+      
+
+      function ButtonCounter(){
+
+      const [ count, setCount ] = React.useState(0);
+
+      const autoClickRef = React.useRef(null);
+
+        function buttonClicked(){
+          setCount(count + 1);
+        }
+
+        function reset(){
+          setCount(0);
+        }
+
+        function autoClick(){
+          const buttonElem = autoClickRef.current;
+          if (!buttonElem) return;
+          setInterval(() => {
+            buttonElem.click();
+            console.log('clicked')
+          }, 1000);
+        }
+
+
+        return(  
+          <div className="buttonCounter-container">
+            <button
+              className= 'buttonCounter'
+              onClick={buttonClicked}
+              ref={autoClickRef}
+            > Clicked {count} {count === 1 
+              ? "time" 
+              : "times"}
+            </button>
+
+            <button
+              className= 'buttonCounter'
+              onClick={reset}
+            > Reset
+            </button>
+
+            <button
+              className= 'buttonCounter'
+              onClick={autoClick}
+            > Auto Click
+            </button>
+          </div>     
+          
+        );
+      }
+
+
+    
+      function App(){
+
+        return(
+          <ButtonCounter/>       
+        );
+      }
+
+
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
