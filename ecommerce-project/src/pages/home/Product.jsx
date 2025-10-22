@@ -8,18 +8,18 @@ export function Product({ product, loadCart }) {
   const [quantity, setQuantity] = useState(1);
 
   const addToCart = async () => {
-          await axios.post('/api/cart-items', {
-            productId: product.id,
-            quantity: quantity
-          });
-          await loadCart();
-        }
+    await axios.post('/api/cart-items', {
+      productId: product.id,
+      quantity: quantity
+    });
+    await loadCart();
+  }
 
   const selectQuantity = (event) => {
-          //Componente controlado
-          const quantitySelected = Number(event.target.value);
-          setQuantity(quantitySelected);
-        }
+    //Componente controlado
+    const quantitySelected = Number(event.target.value);
+    setQuantity(quantitySelected);
+  }
 
   return (
     <div className="product-container">
@@ -63,7 +63,7 @@ export function Product({ product, loadCart }) {
 
       <div className="added-to-cart">
         <img src={CheckmarkIcon} />
-      
+
       </div>
 
       <button className="add-to-cart-button button-primary"
