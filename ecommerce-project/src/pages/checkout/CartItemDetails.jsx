@@ -33,6 +33,7 @@ export function CartItemDetails({ cartItem, loadCart }) {
 
     if (keypressed === "Enter") {
       updateQuantity();
+      
     } else if (keypressed === "Escape") {
       setQuantity(cartItem.quantity);
       setIsUpdatingQuantity(false);
