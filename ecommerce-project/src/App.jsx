@@ -9,6 +9,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 window.axios = axios;
+// In console:
+// axios.post('/api/reset');
+// To reset the backend into the default version
 
 function App() {
 
