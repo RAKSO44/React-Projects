@@ -6,8 +6,15 @@ import LogoWhite from '../assets/images/logo-white.png';
 import MobileLogoWhite from '../assets/images/mobile-logo-white.png';
 import './Header.css';
 
+type HeaderProps = {
+  cart: {
+    productId: string;
+    quantity: number;
+    deliveryOptionId: string;
+  } [];
+}
 
-export function Header({ cart }) {
+export function Header({ cart } : HeaderProps) {
 
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -21,7 +28,7 @@ export function Header({ cart }) {
     cartQuantity += cartItem.quantity
   });
 
-  const updateSearchInput = (event) => {
+  const updateSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
   };
 
